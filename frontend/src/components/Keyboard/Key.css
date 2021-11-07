@@ -1,0 +1,24 @@
+.Key{
+    fill: #35a282;
+    stroke: #474948;
+    width: 40px;
+    height: 40px;
+}
+
+.KeyText{
+    fill: #fcfcfc;
+}
+
+.KeyEnter{
+    fill: #35a282;
+    stroke: #474948;
+    width: 75px;
+    height: 40px;
+}
+
+.KeyShiftRight{
+    fill: #35a282;
+    stroke: #474948;
+    width: 110px;
+    height: 40px;
+}
