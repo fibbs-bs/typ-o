@@ -1,0 +1,4 @@
+MongoDB Compass connection: mongodb+srv://fibs:<password>@typ-o.ms53i.mongodb.net/test
+Index creation ("Primary keys"): db.collection.createIndex({"nick":1},{unique:1})
+
+Write Result problem! : https://stackoverflow.com/questions/28313657/getting-values-from-writeresult-mongo
