@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     nick: {
         type: String,
-        required: true
+        required: [true,"El nick es campo obligatorio!"]
     },
     mail: {
         type: String,
-        required: true
+        validate: [validator.isEmail,"Porfavor ingresa un email correcto!"],
+        required: [true,"El mail es campo obligatorio!"]
     },
     passwordSalt: {
         type: String,
-        required: true
+        required: [true,"La contraseña es campo obligatorio!"]
     },
     passwordHash: {
         type: String,

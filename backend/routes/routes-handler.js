@@ -3,21 +3,18 @@ const Schemas = require('../models/schemas');
 
 router.get('/addUser', async (req,res)=>{
     const user = {
-        nick: 'Orion',
-        mail: 'oriori@gmail.com',
-        passwordSalt: 'holamellamoorion'
+        nick: 'a_hognose_snake',
+        mail: 'a_hognose_snake@gmail.com',
+        passwordSalt: 'megustaeluwu'
     }
     const newUser = new Schemas["Users:"](user);
 
     try{
-        await newUser.save( async (err,newUserResult) =>{
-            console.log(`Usuario ${user.nick} creado!`);
-            res.end('Nuevo usuario creado!');
-        });
+        await newUser.save();
+        res.status(200).send(newUser);
     }
     catch(err) {
-        console.log(err);
-        res.end("Usuario no añadido! Algo ocurrió mal")
+        res.status(500).end("Error");
     }
 
 });
