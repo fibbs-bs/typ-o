@@ -9,7 +9,7 @@ const userSchema = new Schema({
     },
     mail: {
         type: String,
-        validate: [validator.isEmail,"Porfavor ingresa un email correcto!"],
+        validate: [validator.isEmail,"Ingresa un email correcto!"],
         required: [true,"El mail es campo obligatorio!"]
     },
     passwordSalt: {
