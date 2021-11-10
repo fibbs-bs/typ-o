@@ -2,3 +2,5 @@ MongoDB Compass connection: mongodb+srv://fibs:<password>@typ-o.ms53i.mongodb.ne
 Index creation ("Primary keys"): db.collection.createIndex({"nick":1},{unique:1})
 
 Write Result problem! : https://stackoverflow.com/questions/28313657/getting-values-from-writeresult-mongo
+
+Understanding a Basic Node Js Project: https://github.com/codrkai/node_react_mongodb_tutorial/blob/master/backend/routes/handler.js
