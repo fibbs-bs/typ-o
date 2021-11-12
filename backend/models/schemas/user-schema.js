@@ -34,7 +34,7 @@ userSchema.methods.hashPassword = async password =>{
     return await bcrypt.hash(password,salt);
 };
 
-userSchema.methods.comparePassword = function(password){
+userSchema.methods.comparePassword = async function(password){
     await bcrypt.compare(password,this.password);
 }
 
