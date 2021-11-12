@@ -22,12 +22,11 @@ const userSchema = new Schema({
         required: false
     },
     globalRanking: {
-        type: Number,
-        default: 0.0
+        type: Number
     }
 },{
     timestamps: true //updated at and created at (date) --
-    
+
 });
 
 userSchema.methods.hashPassword = async password =>{
