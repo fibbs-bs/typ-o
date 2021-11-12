@@ -27,6 +27,7 @@ const userSchema = new Schema({
     }
 },{
     timestamps: true //updated at and created at (date) --
+    
 });
 
 userSchema.methods.hashPassword = async password =>{
