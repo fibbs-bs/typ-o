@@ -1,22 +1,15 @@
 const router = require('express').Router();
-const Schemas = require('../models/schemas');
+const userctrl = require('../controllers/user-controller');
 
-router.get('/addUser', async (req,res)=>{
-    const user = {
-        nick: 'a_hognose_snake',
-        mail: 'a_hognose_snake@gmail.com',
-        passwordSalt: 'megustaeluwu'
+
+router.post(
+    '/addUser',
+    (req,res) =>{ 
+        userctrl.signup(req,res)
     }
-    const newUser = new Schemas["Users:"](user);
+);
 
-    try{
-        await newUser.save();
-        res.status(200).send(newUser);
-    }
-    catch(err) {
-        res.status(500).end("Error");
-    }
 
-});
 
+ 
 module.exports = router;

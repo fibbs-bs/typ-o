@@ -43,6 +43,10 @@ const sesionSchema = new Schema({
     sesionTime: {
         type: Number, //Sesion time will be set in seconds.
         required: true
+    },
+    sesionDate: {
+        type: Date,
+        default: Date.now
     }
 });
 
