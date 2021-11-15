@@ -1,33 +1,38 @@
 const router = require('express').Router();
-const Schemas = require('../models/schemas');
+const User = require('../models/schemas')["Users:"];
 
 const ctrl = {};
 
 ctrl.signup = async (req,res)=>{
-    const {nick,mail,pass,confirmationPass} = req.body;
 
-    if (pass == confirmationPass){
-        
+    const nick = req.body.nick;
+    const mail = req.body.mail;
+    const pass = req.body.pass;
+
+    const emailUser = await User.findOne({mail: mail});
+
+    if (emailUser){
+        res.status(406).send(emailUser.mail+" ya está asociado a otro usuario!");
     }
     else{
-        res.status(300).send("Las contraseñas no coinciden");
-    }
-
-    const user = {
-        nick: nick,
-        mail: mail,
-        passwordSalt: pass
-    }
-    const newUser = new Schemas["Users:"](user);
-
-    try{
-        await newUser.save();
-        res.status(200).send(newUser);
-    }
-    catch(err) {
-        if (err.code == 1100) res.status(300).send("El nick ya existe");
-        else res.status(500).end("Error");
-    }
-
-    module.exports = ctrl;
+        const newUser = new User({
+            nick,
+            mail,
+            pass
+        });
+        newUser.passwordSalt = pass;
+        newUser.passwordHash = await newUser.hashPassword(pass);
+        
+        try{
+            await newUser.save();
+            res.status(200).send(newUser);
+        }
+        catch(err) {
+            if (err.code == 11000) res.status(300).send("El nick ya existe.\n"+err.name);
+            else res.status(500).end(err.name);
+        }
+    };
 };
+
+
+module.exports = ctrl;

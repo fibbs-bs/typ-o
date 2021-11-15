@@ -15,28 +15,32 @@ const userSchema = new Schema({
     },
     passwordSalt: {
         type: String,
-        required: [true,"La contraseña es campo obligatorio!"]
+        require : true
     },
     passwordHash: {
         type: String,
-        required: false
+        require : true
     },
     globalRanking: {
-        type: Number
+        type: Number,
+        default: 0.0
     }
 },{
     timestamps: true //updated at and created at (date) --
 
 });
 
-userSchema.methods.hashPassword = async password =>{
+userSchema.methods.hashPassword = async function (password){
     const salt = await bcrypt.genSalt(11);
-    return await bcrypt.hash(password,salt);
+    return await bcrypt.hash(password, salt);
 };
 
 userSchema.methods.comparePassword = async function(password){
-    await bcrypt.compare(password,this.password);
+    return await bcrypt.compare(password,this.password);
 }
 
+
 const User = mongoose.model('user',userSchema, 'user');
+
+
 module.exports = User;

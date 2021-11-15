@@ -1,11 +1,14 @@
 const router = require('express').Router();
 const userctrl = require('../controllers/user-controller');
-/*
+
+
 router.post(
     '/addUser',
-    userctrl.signup
+    (req,res) =>{ 
+        userctrl.signup(req,res)
+    }
 );
- wena wena*/ 
+
 
 
  
