@@ -1,4 +1,4 @@
-const router = require('express').Router();
+
 const User = require('../models/schemas')["Users:"];
 
 const ctrl = {};

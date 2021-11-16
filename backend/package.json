@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
     "nodemon": "^2.0.15",
+    "underscore": "^1.13.1",
     "validator": "^13.7.0"
   }
 }
